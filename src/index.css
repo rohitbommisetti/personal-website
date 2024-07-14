@@ -1,0 +1,8 @@
+@import url('https://rsms.me/inter/inter.css');
+
+body {
+  margin: 0;
+  font-family: 'Inter-variable', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
