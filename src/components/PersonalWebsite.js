@@ -32,12 +32,11 @@ const PersonalWebsite = () => {
       </div>
       
       <footer className={styles.footer}>
-        {['Email', 'Twitter', 'LinkedIn', 'Substack'].map((link) => (
-          <a key={link} href="#" className={styles.link}>
-            {link}
-          </a>
-        ))}
-      </footer>
+  <a href="mailto:rohitbommisetti@pitt.edu" className={styles.link}>Email</a>
+  <a href="https://twitter.com/rohitbommisetti" className={styles.link}>Twitter</a>
+  <a href="https://www.linkedin.com/in/rohitbommisetti" className={styles.link}>LinkedIn</a>
+  <a href="https://bommisetti.substack.com" className={styles.link}>Substack</a>
+</footer>
     </div>
   );
 };
