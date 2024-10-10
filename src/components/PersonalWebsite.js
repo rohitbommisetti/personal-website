@@ -6,10 +6,10 @@ const PersonalWebsite = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         <h1 className={styles.title}>Rohit Bommisetti</h1>
-        <p className={styles.subtitle}>exploring the latent space</p>
+        <p className={styles.subtitle}>private equity investor</p>
         
         <section className={styles.section}>
-          <p>i studied neuroscience in college, and apply that lens to the world of technology</p>
+          <p>I previously studied philosophy in college, and apply that lens to the world of finance</p>
         </section>
         
         <section className={styles.section}>
