@@ -9,11 +9,11 @@ const PersonalWebsite = () => {
         <p className={styles.subtitle}>Philadelphia/NYC</p>
       
         <section className={styles.section}>
-          <p>I'm currently working on transforming America's essential service industries with AI at <a href="http://renovuscapital.com" style={{color: '#e5e5e5'}}>Renovus Capital</a>. I believe applying AI to the real economy will be one of the most important problems of the next decade.</p>
+          <p>I'm currently working on transforming America's essential service industries with AI at <a href="http://renovuscapital.com" style={{color: '#e5e5e5'}}>Renovus Capital</a>. I believe the next chapter of American dynamism will be written in how we apply AI to real work. </p>
         </section>
         
         <section className={styles.section}>
-          <p>I previously worked on improving oncology readmissions at CMU, building a student entrepreneurship community, and teaching AI with a team from Stanford. I studied economics at the University of Pittsburgh.</p>
+          <p>I previously worked on reducing oncology readmissions at CMU, building a student entrepreneurship community, and teaching AI with a team from Stanford. I studied economics at the University of Pittsburgh.</p>
         </section>
         
         <section className={styles.section}>
