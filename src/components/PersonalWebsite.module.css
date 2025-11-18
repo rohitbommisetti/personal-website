@@ -4,8 +4,8 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: white;
-  color: black;
+  background-color: #1a1a1a;
+  color: #e5e5e5;
   overflow-x: hidden;
 }
 
@@ -33,10 +33,12 @@ body, html {
   font-size: 16px;
   font-weight: 600;
   margin: 0 0 4px 0;
+  color: #e5e5e5;
 }
 
 .subtitle {
   font-size: 16px;
+  color: #999999;
   font-weight: 300;
   margin: 0 0 2rem 0;
   opacity: 0.7;
@@ -44,6 +46,7 @@ body, html {
 
 .section {
   margin-bottom: 1.5rem;
+   color: #e5e5e5; /* Off-white grey links */
 }
 
 .section p {
@@ -60,7 +63,7 @@ body, html {
 }
 
 .link {
-  color: inherit;
+   color: #e5e5e5; /* Off-white grey links */
   text-decoration: none;
   display: block;
   margin-bottom: 0.5rem; /* Reduced spacing between items */
