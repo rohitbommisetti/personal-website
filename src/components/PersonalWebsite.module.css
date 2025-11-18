@@ -10,9 +10,9 @@ body, html {
 }
 
 .container {
-  font-family: "inter-variable", sans-serif;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-variation-settings: "slnt" 0, "wght" 400;
-  font-size: 12px;
+  font-size: .875rem;
   line-height: 1.5;
   font-weight: 300;
   padding: 40px 40px 20px;
@@ -30,14 +30,14 @@ body, html {
 }
 
 .title {
-  font-size: 16px;
+  font-size: .875rem;
   font-weight: 600;
   margin: 0 0 4px 0;
   color: #e5e5e5;
 }
 
 .subtitle {
-  font-size: 16px;
+  font-size: .875rem;
   color: #999999;
   font-weight: 300;
   margin: 0 0 2rem 0;
@@ -63,7 +63,7 @@ body, html {
 }
 
 .link {
-   color: #e5e5e5; /* Off-white grey links */
+  color: #e5e5e5; /* Off-white grey links */
   text-decoration: none;
   display: block;
   margin-bottom: 0.5rem; /* Reduced spacing between items */
@@ -74,7 +74,7 @@ body, html {
 }
 
 .link:hover {
-  border-bottom-color: rgba(0, 0, 0, 0.5);
+  border-bottom-color:  #e5e5e5; /* Off-white grey links */
 }
 @media (max-width: 600px) {
   .container {
