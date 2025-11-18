@@ -17,7 +17,7 @@ const PersonalWebsite = () => {
         </section>
         
         <section className={styles.section}>
-          <p>I love to read biographies, write about interesting ideas, and spend time in the ocean.</p>
+          <p>When I'm not working, I'm probably deep in a biography, on a trail, or in the ocean.</p>
         </section>
         
        </div>
