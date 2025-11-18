@@ -26,7 +26,7 @@ const PersonalWebsite = () => {
   <a href="mailto:rohitbommisetti@pitt.edu" className={styles.link}>Email</a>
   <a href="https://twitter.com/rohitbommisetti" className={styles.link}>Twitter</a>
   <a href="https://www.linkedin.com/in/rohitbommisetti" className={styles.link}>LinkedIn</a>
-  <a href="https://bommisetti.substack.com" className={styles.link}>Substack</a>
+  <a href="https://rohit.posthaven.com" className={styles.link}>Writing</a>
 </footer>
     </div>
   );
