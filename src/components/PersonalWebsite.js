@@ -9,27 +9,18 @@ const PersonalWebsite = () => {
         <p className={styles.subtitle}>in pursuit of intentionality</p>
       
         <section className={styles.section}>
-          <p>I'm currently working on transforming America's essential service industries with AI at <a href="hhtp://renovuscapital.com">Renovus Capital</a>.</p>
+          <p>I'm currently working on transforming America's essential service industries with AI at <a href="hhtp://renovuscapital.com" style="color:#000000;">Renovus Capital</a>.</p>
         </section>
         
         <section className={styles.section}>
-          <p>favorited: pomegranates, alpine lakes, french press, summer rain, moonlit beaches</p>
+          <p>I previously worked on improving oncology readmissions at CMU, building the first student entrepreneurship community, and teaching AI with a team from Stanford. I studied economics at the University of Pittsburgh.</p>
         </section>
 
         <section className={styles.section}>
-          <p>favorite hobbies: learning surfing, reading, guitar, trying new restaurants, weekend getaways</p>
-          
+          <p>I love to read biographies, write about interesting ideas, and spend time in the ocean. </p>
         </section>
         
-        <section className={styles.section}>
-          <p>favorite places: nyc, istanbul, rishikesh, cannes, barcelona</p>
-        </section>
-        
-        <section className={styles.section}>
-          <p>🎸🌴🥭🥊</p>
-        </section>
-      
-      </div>
+       </div>
       
       <footer className={styles.footer}>
   <a href="mailto:rohitbommisetti@pitt.edu" className={styles.link}>Email</a>
