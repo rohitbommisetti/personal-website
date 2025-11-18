@@ -1,4 +1,6 @@
 import React from 'react';
+import styles from './PersonalWebsite.module.css';
+
 
 const PersonalWebsite = () => {
   return (
