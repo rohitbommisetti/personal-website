@@ -6,6 +6,7 @@ const PersonalWebsite = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         <h1 className={styles.title}>Rohit Bommisetti</h1>
+        <p className={styles.subtitle}>Philadelphia/NYC</p>
       
         <section className={styles.section}>
           <p>I'm currently working on transforming America's essential service industries with AI at <a href="http://renovuscapital.com" style={{color: '#000000'}}>Renovus Capital</a>. I believe applying AI to the real economy will be one of the most important problems of the next decade.</p>
