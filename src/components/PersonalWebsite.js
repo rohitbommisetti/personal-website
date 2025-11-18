@@ -9,7 +9,7 @@ const PersonalWebsite = () => {
         <p className={styles.subtitle}>in pursuit of intentionality</p>
       
         <section className={styles.section}>
-          <p>I studied economics in college, and apply that lens to the world of finance</p>
+          <p>I'm currently working on transforming America's essential service industries with AI at <Link to="hhtp://renovuscapital.com">Renovus Capital</Link>.</p>
         </section>
         
         <section className={styles.section}>
