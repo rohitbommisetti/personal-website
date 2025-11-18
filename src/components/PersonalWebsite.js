@@ -13,7 +13,7 @@ const PersonalWebsite = () => {
         </section>
         
         <section className={styles.section}>
-          <p>I previously worked on improving oncology readmissions at CMU, building the first student entrepreneurship community, and teaching AI with a team from Stanford. I studied economics at the University of Pittsburgh.</p>
+          <p>I previously worked on improving oncology readmissions at CMU, building a student entrepreneurship community, and teaching AI with a team from Stanford. I studied economics at the University of Pittsburgh.</p>
         </section>
         
         <section className={styles.section}>
