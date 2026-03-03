@@ -1,0 +1,16 @@
+import { Post } from "../types";
+
+const post: Post = {
+  id: 1,
+  slug: "ai-in-private-equity",
+  title: "How I think about AI in private equity",
+  date: "Feb 2026",
+  image: null, // swap in a URL or imported image path when ready
+  content: [
+    "Placeholder — replace with your first paragraph.",
+    "Placeholder — replace with your second paragraph.",
+    "Placeholder — replace with your third paragraph.",
+  ],
+};
+
+export default post;

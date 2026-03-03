@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:     #f5f5f5;
+  --text:   #000;
+  --muted:  #6e6e6e;
+  --subtle: #aaa;
+  --dim:    #e2e2e2;
+  --body:   #222;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:     #09101a;
+    --text:   #e0e0e0;
+    --muted:  #777;
+    --subtle: #4a4a4a;
+    --dim:    #1a2232;
+    --body:   #c8c8c8;
+  }
+}
+
+html, body {
+  background: var(--bg);
+}
+
+body {
+  font-family: 'Geist', 'Inter', -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
