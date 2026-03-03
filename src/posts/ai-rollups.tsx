@@ -2,8 +2,8 @@ import { Post } from "../types";
 
 const post: Post = {
   id: 1,
-  slug: "ai-in-private-equity",
-  title: "How I think about AI in private equity",
+  slug: "ai-rollups",
+  title: "AI-enabled rollups",
   date: "Feb 2026",
   image: null, // swap in a URL or imported image path when ready
   content: [
