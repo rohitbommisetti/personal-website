@@ -3,7 +3,7 @@ import { Post } from "../types";
 const post: Post = {
   id: 3,
   slug: "spain-2026",
-  title: "France 2026",
+  title: "Spain & France 2026",
   date: "May 2026",
   image: null,
   content: [
