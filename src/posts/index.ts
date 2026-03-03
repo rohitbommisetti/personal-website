@@ -8,6 +8,6 @@ import india from "./india-2025";
 
 import { Post } from "../types";
 
-const posts: Post[] = [aiInPE, realEconomy, spain, india];
+const posts: Post[] = [aiInPE];
 
 export default posts;
