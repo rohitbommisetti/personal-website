@@ -2,8 +2,8 @@ import { Post } from "../types";
 
 const post: Post = {
   id: 4,
-  slug: "building-communities",
-  title: "On building communities from scratch",
+  slug: "india-2025",
+  title: "India 2025",
   date: "Aug 2025",
   image: null,
   content: [
