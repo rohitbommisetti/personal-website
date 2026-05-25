@@ -6,7 +6,7 @@ const PersonalWebsite = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         <h1 className={styles.title}>Rohit Bommisetti</h1>
-        <p className={styles.subtitle}>📍PHL/NYC</p>
+        <p className={styles.subtitle}>📍PHL</p>
       
         <section className={styles.section}>
           <p>I'm currently working on transforming businesses with AI at <a href="http://renovuscapital.com" style={{color: '#e5e5e5'}}>Renovus Capital</a>. I believe the next chapter of American dynamism will be written in how we apply AI to real economy. </p>
@@ -23,10 +23,9 @@ const PersonalWebsite = () => {
        </div>
       
       <footer className={styles.footer}>
-  <a href="mailto:rohitbommisetti@pitt.edu" className={styles.link}>Email</a>
+  <a href="mailto:rohit.bommisetti@renovuscapital.com" className={styles.link}>Email</a>
   <a href="https://twitter.com/rohitbommisetti" className={styles.link}>X</a>
   <a href="https://www.linkedin.com/in/rohitbommisetti" className={styles.link}>LinkedIn</a>
-  <a href="https://rohit.posthaven.com" className={styles.link}>Writing</a>
 </footer>
     </div>
   );
