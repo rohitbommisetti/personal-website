@@ -3,6 +3,8 @@ const places = [
   {
     category: 'Eat',
     items: [
+      { name: 'Friday Saturday Sunday', area: 'Rittenhouse', note: 'The tasting menu upstairs, or a seat at the bar.' },
+      { name: 'La Jefa', area: 'Rittenhouse', note: 'Mexican café by day, cocktails by night.' },
       { name: 'Zahav', area: 'Society Hill', note: 'Israeli. Order the laffa and hummus.' },
       { name: 'Suraya', area: 'Fishtown', note: 'Lebanese, with a garden out back.' },
       { name: 'John’s Roast Pork', area: 'South Philly', note: 'Roast pork with greens and sharp provolone.' },
