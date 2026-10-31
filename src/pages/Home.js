@@ -6,10 +6,10 @@ const Home = () => (
   <>
     <div className={styles.bio}>
       <p>
-        I work at <a href="https://renovuscapital.com">Renovus Capital</a>, a private equity firm with over
-        $2.5B AUM, focused on modernizing the service economy with AI. We've been{' '}
-        <a href="https://www.businesswire.com/news/home/20260511889861/en/">ranked</a> the world's #1
-        small-cap PE firm four years running.
+        I work at <a href="https://renovuscapital.com">Renovus Capital</a>, a private equity firm outside
+        Philadelphia, focused on modernizing the service economy with AI. We've been{' '}
+        <a href="https://www.businesswire.com/news/home/20260511889861/en/">ranked</a> #1 in small-cap
+        private equity globally four years running.
       </p>
       <p>
         Before that, I worked on reducing oncology readmissions at Carnegie Mellon, built a student
