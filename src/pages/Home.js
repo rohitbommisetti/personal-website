@@ -22,6 +22,10 @@ const Home = () => (
     <div className={styles.links}>
       <Link to="/writing">Writing</Link>
       <Link to="/bookshelf">Bookshelf</Link>
+      <Link to="/quotes">Quotes</Link>
+      <Link to="/trails">Trails</Link>
+      <Link to="/places">Places</Link>
+      <Link to="/photos">Photos</Link>
     </div>
   </>
 );

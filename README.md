@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# bommisetti.org
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal site. React (Create React App), deployed on Vercel from `main`.
 
-## Available Scripts
+## Writing and publishing a blog post
 
-In the project directory, you can run:
+```bash
+npm run write
+```
 
-### `npm start`
+This opens a local editor at http://localhost:4321.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Click **New post**, add a title, and write in Markdown. The preview updates as you type.
+2. Drag, drop or paste images into the editor (or use **Image** / cover **Upload**). They're saved to `public/images/posts/<slug>/`.
+3. **Save draft** keeps it hidden on the live site. **Publish** makes it visible.
+4. Click **Commit changes**, then open GitHub Desktop and **Push origin**. Vercel deploys within a minute or two.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Posts are plain Markdown files in `public/posts/`, so you can also edit them by hand. Drafts are hidden on the live site; add `?drafts` to any URL to preview them (works on Vercel previews too).
 
-### `npm test`
+## Editing the other pages
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Each page reads from a simple list you can edit directly:
 
-### `npm run build`
+| Page | File |
+| --- | --- |
+| Bookshelf | `src/data/books.js` |
+| Quotes | `src/data/quotes.js` |
+| Trails | `src/data/trails.js` |
+| Places | `src/data/places.js` |
+| Photos | `src/data/photos.js` (put images in `public/photos/`) |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Running the site locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`npm start` (and `npm run build`) regenerate `public/posts/index.json` from the Markdown files first.
