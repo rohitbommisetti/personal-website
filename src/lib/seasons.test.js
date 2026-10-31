@@ -3,10 +3,7 @@ import { seasonFor, newYear } from './seasons';
 const on = (month, day, year = 2027) => seasonFor(new Date(year, month - 1, day));
 
 test('picks the right occasion for each window', () => {
-  expect(on(10, 24)).toBeNull();
-  expect(on(10, 25)).toBe('halloween');
-  expect(on(10, 31)).toBe('halloween');
-  expect(on(11, 1)).toBeNull();
+  expect(on(10, 31)).toBeNull();
   expect(on(12, 19)).toBeNull();
   expect(on(12, 20)).toBe('christmas');
   expect(on(12, 26)).toBe('christmas');
@@ -14,9 +11,7 @@ test('picks the right occasion for each window', () => {
   expect(on(12, 31)).toBe('newyear');
   expect(on(1, 2)).toBe('newyear');
   expect(on(1, 3)).toBeNull();
-  expect(on(7, 19)).toBeNull();
-  expect(on(7, 20)).toBe('birthday');
-  expect(on(7, 21)).toBeNull();
+  expect(on(7, 20)).toBeNull();
 });
 
 test('celebrates the upcoming year on New Year’s Eve', () => {
