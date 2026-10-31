@@ -1,8 +1,28 @@
+:root {
+  --bg: #faf8f0;
+  --ink: #2b3328;
+  --muted: #5f6a59;
+  --line: #cfd6c4;
+  --accent: #46603f;
+  --subtle: #ece8dc;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #1c1d1b;
+  --ink: #e4e5df;
+  --muted: #9ca296;
+  --line: #3e443c;
+  --accent: #c9d6bd;
+  --subtle: #2a2c28;
+  color-scheme: dark;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  background: #faf8f0;
+  background: var(--bg);
 }
 
 body {

@@ -2,22 +2,23 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #faf8f0;
-  color: #2b3328;
+  background: var(--bg);
+  color: var(--ink);
+  transition: background-color 0.2s, color 0.2s;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.6;
 }
 
 .page a {
-  color: #2b3328;
+  color: var(--ink);
   text-decoration: none;
-  border-bottom: 1px solid #cfd6c4;
+  border-bottom: 1px solid var(--line);
   transition: border-color 0.2s;
 }
 
 .page a:hover {
-  border-bottom-color: #46603f;
+  border-bottom-color: var(--accent);
 }
 
 .main {
@@ -48,19 +49,59 @@
 
 .social {
   display: flex;
+  align-items: center;
   gap: 18px;
   font-size: 12px;
 }
 
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: -7px -7px -7px -4px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.themeToggle:hover {
+  color: var(--ink);
+  background: var(--subtle);
+}
+
+.seasonLabel {
+  color: var(--ink);
+}
+
+.seasonal {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 64px;
+}
+
+.seasonal canvas {
+  display: block;
+  width: 100%;
+  height: 140px;
+}
+
 .page .social a,
 .page .muted {
-  color: #5f6a59;
+  color: var(--muted);
   border-bottom-color: transparent;
 }
 
 .page .social a:hover,
 .page a.muted:hover {
-  border-bottom-color: #cfd6c4;
+  border-bottom-color: var(--line);
 }
 
 .bio {
@@ -91,7 +132,7 @@
   margin: 0;
   font-size: 14px;
   font-weight: 400;
-  color: #5f6a59;
+  color: var(--muted);
 }
 
 .list {
@@ -112,7 +153,7 @@
 
 .author {
   font-size: 12px;
-  color: #5f6a59;
+  color: var(--muted);
 }
 
 .post {
@@ -132,7 +173,7 @@
 .date {
   flex-shrink: 0;
   font-size: 12px;
-  color: #5f6a59;
+  color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
 
@@ -141,7 +182,7 @@
   justify-content: space-between;
   gap: 16px;
   font-size: 12px;
-  color: #5f6a59;
+  color: var(--muted);
 }
 
 .footer {
@@ -154,7 +195,7 @@
   justify-content: space-between;
   gap: 16px;
   font-size: 12px;
-  color: #5f6a59;
+  color: var(--muted);
 }
 
 .time {
@@ -168,6 +209,10 @@
 
   .footer {
     padding: 0 24px 32px;
+  }
+
+  .seasonal {
+    padding: 0 24px;
   }
 }
 
@@ -221,7 +266,7 @@
 
 .entryNote {
   font-size: 13px;
-  color: #2b3328;
+  color: var(--ink);
 }
 
 /* Places */
@@ -237,7 +282,7 @@
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #5f6a59;
+  color: var(--muted);
 }
 
 /* Photos */
@@ -267,7 +312,7 @@
   object-fit: cover;
   border-radius: 4px;
   display: block;
-  background: #ece8dc;
+  background: var(--subtle);
 }
 
 /* Blog posts */
@@ -288,10 +333,10 @@
   display: inline-block;
   margin-left: 8px;
   padding: 0 6px;
-  border: 1px solid #cfd6c4;
+  border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 11px;
-  color: #5f6a59;
+  color: var(--muted);
   vertical-align: middle;
 }
 
@@ -331,8 +376,8 @@
 .prose blockquote {
   margin-left: 0;
   padding-left: 16px;
-  border-left: 2px solid #cfd6c4;
-  color: #5f6a59;
+  border-left: 2px solid var(--line);
+  color: var(--muted);
 }
 
 .prose ul,
@@ -346,14 +391,14 @@
 
 .prose code {
   font-size: 13px;
-  background: #ece8dc;
+  background: var(--subtle);
   padding: 1px 4px;
   border-radius: 3px;
 }
 
 .prose pre {
   overflow-x: auto;
-  background: #ece8dc;
+  background: var(--subtle);
   padding: 12px;
   border-radius: 4px;
 }
@@ -364,5 +409,5 @@
 
 .prose hr {
   border: none;
-  border-top: 1px solid #cfd6c4;
+  border-top: 1px solid var(--line);
 }
