@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Write — Rohit Bommisetti</title>
+<link rel="icon" href="/favicon.ico">
+<style>
+  :root {
+    --bg: #faf8f0; --panel: #f3f0e6; --ink: #2b3328; --muted: #5f6a59; --line: #dcdccf;
+    --accent: #46603f; --danger: #a3301f;
+    --font: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font: 14px/1.6 var(--font); }
+  button, input, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  .app { display: grid; grid-template-columns: 260px minmax(0, 1fr); height: 100vh; }
+
+  /* Sidebar */
+  aside { border-right: 1px solid var(--line); background: var(--panel); display: flex; flex-direction: column; min-height: 0; }
+  .side-head { display: flex; justify-content: space-between; align-items: center; padding: 20px 16px 12px; }
+  .side-head h1 { margin: 0; font-size: 15px; font-weight: 600; }
+  .post-list { list-style: none; margin: 0; padding: 0 8px 16px; overflow-y: auto; flex: 1; }
+  .post-list button { width: 100%; text-align: left; border: 0; background: none; padding: 8px; border-radius: 6px; display: flex; flex-direction: column; gap: 2px; }
+  .post-list button:hover { background: rgba(70, 96, 63, 0.08); }
+  .post-list button.active { background: rgba(70, 96, 63, 0.14); }
+  .post-list .t { font-weight: 500; }
+  .post-list .m { font-size: 12px; color: var(--muted); }
+  .git { border-top: 1px solid var(--line); padding: 12px 16px 16px; font-size: 12px; color: var(--muted); display: flex; flex-direction: column; gap: 8px; }
+
+  /* Main */
+  main { display: flex; flex-direction: column; min-height: 0; }
+  .bar { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .status { margin-right: auto; font-size: 12px; color: var(--muted); }
+  .status.error { color: var(--danger); }
+  .btn { border: 1px solid var(--line); background: #fff; border-radius: 6px; padding: 6px 12px; min-height: 34px; }
+  .btn:hover { border-color: var(--muted); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.danger { color: var(--danger); }
+  .btn:disabled { opacity: 0.5; cursor: default; }
+
+  .fields { padding: 20px 20px 12px; display: grid; gap: 10px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .fields label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+  .fields .wide { grid-column: 1 / -1; }
+  .fields .half { grid-column: span 2; }
+  .fields input { border: 1px solid var(--line); background: #fff; border-radius: 6px; padding: 7px 10px; color: var(--ink); font-size: 14px; }
+  .fields input.title { font-size: 20px; font-weight: 600; padding: 8px 10px; }
+  .row { display: flex; gap: 6px; }
+  .row input { flex: 1; min-width: 0; }
+  .check { flex-direction: row !important; align-items: center; gap: 8px !important; font-size: 13px !important; color: var(--ink) !important; padding-top: 18px; }
+
+  .tools { display: flex; gap: 4px; padding: 0 20px 8px; flex-wrap: wrap; align-items: center; }
+  .tools button { border: 1px solid var(--line); background: #fff; border-radius: 6px; min-width: 34px; height: 30px; padding: 0 8px; }
+  .tools .hint { margin-left: auto; font-size: 12px; color: var(--muted); }
+  .split { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; border-top: 1px solid var(--line); }
+  textarea { border: 0; border-right: 1px solid var(--line); resize: none; padding: 20px; background: #fff; font: 14px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; outline: none; }
+  textarea.dragging { background: #eef3ea; }
+  .preview { overflow-y: auto; padding: 32px 40px; }
+  .preview .inner { max-width: 640px; margin: 0 auto; }
+  .preview h1 { font-size: 22px; margin: 0 0 4px; line-height: 1.3; }
+  .preview .date { font-size: 12px; color: var(--muted); }
+  .preview .cover { width: 100%; border-radius: 4px; margin-top: 20px; display: block; }
+  .prose { font-size: 15px; line-height: 1.7; margin-top: 20px; }
+  .prose > * { margin: 0 0 16px; }
+  .prose h2 { margin-top: 32px; font-size: 17px; }
+  .prose h3 { margin-top: 24px; font-size: 15px; }
+  .prose img { max-width: 100%; border-radius: 4px; display: block; }
+  .prose blockquote { margin-left: 0; padding-left: 16px; border-left: 2px solid var(--line); color: var(--muted); }
+  .prose a { color: var(--ink); text-decoration-color: var(--line); }
+  .prose code { font-size: 13px; background: #ece8dc; padding: 1px 4px; border-radius: 3px; }
+  .prose pre { background: #ece8dc; padding: 12px; border-radius: 4px; overflow-x: auto; }
+  .empty { margin: auto; text-align: center; color: var(--muted); }
+  .badge { display: inline-block; font-size: 11px; border: 1px solid var(--line); border-radius: 999px; padding: 0 6px; color: var(--muted); }
+  .badge.live { border-color: var(--accent); color: var(--accent); }
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    aside { max-height: 200px; }
+    .split { grid-template-columns: 1fr; }
+    .fields { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="side-head">
+      <h1>Posts</h1>
+      <button class="btn primary" id="new">New post</button>
+    </div>
+    <ul class="post-list" id="list"></ul>
+    <div class="git">
+      <span id="git-status">Checking for changes…</span>
+      <button class="btn" id="commit" disabled>Commit changes</button>
+    </div>
+  </aside>
+
+  <main id="main">
+    <div class="empty" id="empty"><p>Pick a post or start a new one.</p></div>
+  </main>
+</div>
+
+<template id="editor-tpl">
+  <div class="bar">
+    <span class="status" id="status"></span>
+    <a class="btn" id="view" target="_blank" rel="noopener">View on site</a>
+    <button class="btn danger" id="delete">Delete</button>
+    <button class="btn" id="save">Save draft</button>
+    <button class="btn primary" id="publish">Publish</button>
+  </div>
+  <div class="fields">
+    <label class="wide">Title<input class="title" id="title" placeholder="Post title"></label>
+    <label class="half">URL slug<input id="slug" placeholder="post-title"></label>
+    <label>Date<input id="date" type="date"></label>
+    <label class="check"><input type="checkbox" id="draft" checked> Draft</label>
+    <label class="wide">Summary<input id="summary" placeholder="One line shown in previews"></label>
+    <label class="wide">Cover image (optional)
+      <span class="row"><input id="cover" placeholder="Paste an image URL or upload"><button class="btn" id="cover-upload" type="button">Upload</button></span>
+    </label>
+  </div>
+  <div class="tools" role="toolbar" aria-label="Formatting">
+    <button data-wrap="**" title="Bold (⌘B)"><b>B</b></button>
+    <button data-wrap="*" title="Italic (⌘I)"><i>I</i></button>
+    <button data-line="## " title="Heading">H2</button>
+    <button data-line="> " title="Quote">❝</button>
+    <button data-line="- " title="List">•</button>
+    <button data-link title="Link (⌘K)">Link</button>
+    <button data-image title="Insert image">Image</button>
+    <span class="hint">Drag, drop or paste images · ⌘S saves</span>
+  </div>
+  <div class="split">
+    <textarea id="body" spellcheck="true" placeholder="Write in Markdown…"></textarea>
+    <div class="preview"><div class="inner" id="preview"></div></div>
+  </div>
+</template>
+
+<input type="file" id="file" accept="image/*" hidden>
+
+<script type="module">
+import { marked } from '/marked.js';
+
+const $ = (id) => document.getElementById(id);
+const state = { posts: [], current: null, dirty: false, slugTouched: false, fileTarget: 'body' };
+
+const slugify = (text) => text.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '')
+  .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80);
+const today = () => new Date().toLocaleDateString('en-CA');
+const fmt = (iso) => iso ? new Date(`${iso}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'No date';
+
+async function api(path, options = {}) {
+  const res = await fetch(path, options);
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+  return data;
+}
+
+function setStatus(text, error = false) {
+  const el = $('status');
+  if (!el) return;
+  el.textContent = text;
+  el.classList.toggle('error', error);
+}
+
+function renderList() {
+  const list = $('list');
+  list.replaceChildren();
+  if (!state.posts.length) {
+    const li = document.createElement('li');
+    li.style.cssText = 'padding:8px;color:var(--muted);font-size:13px';
+    li.textContent = 'No posts yet.';
+    list.append(li);
+  }
+  for (const post of state.posts) {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.className = state.current?.previousSlug === post.slug ? 'active' : '';
+    const t = document.createElement('span');
+    t.className = 't';
+    t.textContent = post.title;
+    const m = document.createElement('span');
+    m.className = 'm';
+    const badge = document.createElement('span');
+    badge.className = post.draft ? 'badge' : 'badge live';
+    badge.textContent = post.draft ? 'Draft' : 'Live';
+    m.append(`${fmt(post.date)} `, badge);
+    btn.append(t, m);
+    btn.onclick = () => openPost(post.slug);
+    li.append(btn);
+    list.append(li);
+  }
+}
+
+async function refreshGit() {
+  try {
+    const { branch, changes } = await api('/api/status');
+    $('git-status').textContent = changes.length
+      ? `${changes.length} uncommitted change${changes.length > 1 ? 's' : ''} on ${branch}`
+      : `All committed on ${branch}. Push from GitHub Desktop to go live.`;
+    $('commit').disabled = !changes.length;
+  } catch (e) {
+    $('git-status').textContent = 'Git status unavailable.';
+  }
+}
+
+function confirmLeave() {
+  return !state.dirty || confirm('You have unsaved changes. Discard them?');
+}
+
+function mountEditor() {
+  const main = $('main');
+  main.replaceChildren($('editor-tpl').content.cloneNode(true));
+
+  const markDirty = () => { state.dirty = true; setStatus('Unsaved changes'); renderPreview(); };
+  ['title', 'slug', 'date', 'summary', 'cover', 'body'].forEach((id) => $(id).addEventListener('input', markDirty));
+  $('draft').addEventListener('change', () => { markDirty(); updateButtons(); });
+  $('title').addEventListener('input', () => { if (!state.slugTouched) $('slug').value = slugify($('title').value); });
+  $('slug').addEventListener('input', () => { state.slugTouched = true; });
+  $('slug').addEventListener('blur', () => { $('slug').value = slugify($('slug').value); });
+
+  $('save').onclick = () => save($('draft').checked);
+  $('publish').onclick = () => save(!$('draft').checked);
+  $('delete').onclick = remove;
+  $('cover-upload').onclick = () => pickFile('cover');
+
+  document.querySelectorAll('.tools [data-wrap]').forEach((b) => b.onclick = () => wrap(b.dataset.wrap));
+  document.querySelectorAll('.tools [data-line]').forEach((b) => b.onclick = () => prefixLine(b.dataset.line));
+  document.querySelector('.tools [data-link]').onclick = insertLink;
+  document.querySelector('.tools [data-image]').onclick = () => pickFile('body');
+
+  const body = $('body');
+  body.addEventListener('dragover', (e) => { e.preventDefault(); body.classList.add('dragging'); });
+  body.addEventListener('dragleave', () => body.classList.remove('dragging'));
+  body.addEventListener('drop', (e) => {
+    e.preventDefault();
+    body.classList.remove('dragging');
+    [...e.dataTransfer.files].filter((f) => f.type.startsWith('image/')).forEach((f) => uploadInto(f, 'body'));
+  });
+  body.addEventListener('paste', (e) => {
+    const files = [...e.clipboardData.files].filter((f) => f.type.startsWith('image/'));
+    if (files.length) { e.preventDefault(); files.forEach((f) => uploadInto(f, 'body')); }
+  });
+}
+
+function fill(post) {
+  state.current = post;
+  state.slugTouched = Boolean(post.previousSlug);
+  $('title').value = post.meta.title || '';
+  $('slug').value = post.slug || '';
+  $('date').value = post.meta.date || today();
+  $('summary').value = post.meta.summary || '';
+  $('cover').value = post.meta.cover || '';
+  $('draft').checked = post.meta.draft !== false;
+  $('body').value = post.body || '';
+  state.dirty = false;
+  setStatus(post.previousSlug ? 'Saved' : 'New post');
+  updateButtons();
+  renderPreview();
+  renderList();
+}
+
+function updateButtons() {
+  const existing = Boolean(state.current?.previousSlug);
+  const isDraft = $('draft').checked;
+  $('delete').style.display = existing ? '' : 'none';
+  $('publish').textContent = isDraft ? 'Publish' : 'Unpublish';
+  $('publish').className = isDraft ? 'btn primary' : 'btn';
+  $('save').textContent = isDraft ? 'Save draft' : 'Save';
+  const view = $('view');
+  view.style.display = existing ? '' : 'none';
+  if (existing) view.href = `http://localhost:3000/writing/${state.current.previousSlug}${isDraft ? '?drafts' : ''}`;
+}
+
+function renderPreview() {
+  const preview = $('preview');
+  if (!preview) return;
+  const h1 = document.createElement('h1');
+  h1.textContent = $('title').value || 'Untitled';
+  const date = document.createElement('div');
+  date.className = 'date';
+  date.textContent = fmt($('date').value);
+  const nodes = [h1, date];
+  if ($('cover').value.trim()) {
+    const img = document.createElement('img');
+    img.className = 'cover';
+    img.src = $('cover').value.trim();
+    img.alt = '';
+    nodes.push(img);
+  }
+  const prose = document.createElement('div');
+  prose.className = 'prose';
+  prose.innerHTML = marked.parse($('body').value);
+  nodes.push(prose);
+  preview.replaceChildren(...nodes);
+}
+
+async function openPost(slug) {
+  if (!confirmLeave()) return;
+  try {
+    const post = await api(`/api/posts/${slug}`);
+    if (!$('title')) mountEditor();
+    fill({ ...post, previousSlug: post.slug });
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+function newPost() {
+  if (!confirmLeave()) return;
+  mountEditor();
+  fill({ slug: '', meta: { date: today(), draft: true }, body: '', previousSlug: null });
+  $('title').focus();
+}
+
+async function save(draft) {
+  const slug = slugify($('slug').value || $('title').value);
+  if (!$('title').value.trim()) return setStatus('Add a title first.', true);
+  if (!slug) return setStatus('Add a URL slug.', true);
+  $('slug').value = slug;
+  $('draft').checked = draft;
+  setStatus('Saving…');
+  try {
+    const result = await api(`/api/posts/${slug}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: $('title').value, date: $('date').value, summary: $('summary').value,
+        cover: $('cover').value, draft, body: $('body').value, previousSlug: state.current?.previousSlug || null,
+      }),
+    });
+    state.posts = result.posts;
+    fill({ ...result.post, previousSlug: result.post.slug });
+    setStatus(draft ? 'Saved as draft' : 'Published. Commit, then push from GitHub Desktop.');
+    refreshGit();
+  } catch (e) {
+    setStatus(e.message, true);
+  }
+}
+
+async function remove() {
+  const slug = state.current?.previousSlug;
+  if (!slug || !confirm(`Delete "${$('title').value}"? This removes the file from the repo.`)) return;
+  try {
+    const result = await api(`/api/posts/${slug}`, { method: 'DELETE' });
+    state.posts = result.posts;
+    state.current = null;
+    state.dirty = false;
+    $('main').replaceChildren($('empty') || Object.assign(document.createElement('div'), { className: 'empty', textContent: 'Post deleted.' }));
+    renderList();
+    refreshGit();
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+function pickFile(target) {
+  state.fileTarget = target;
+  $('file').value = '';
+  $('file').click();
+}
+
+$('file').addEventListener('change', () => {
+  const file = $('file').files[0];
+  if (file) uploadInto(file, state.fileTarget);
+});
+
+async function uploadInto(file, target) {
+  const slug = slugify($('slug').value || $('title').value);
+  if (!slug) return setStatus('Give the post a title before adding images.', true);
+  $('slug').value = slug;
+  setStatus(`Uploading ${file.name}…`);
+  try {
+    const { url } = await api(`/api/upload?slug=${encodeURIComponent(slug)}&name=${encodeURIComponent(file.name)}`, {
+      method: 'POST', body: file,
+    });
+    if (target === 'cover') {
+      $('cover').value = url;
+    } else {
+      const alt = file.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ');
+      insertAtCursor(`\n![${alt}](${url})\n`);
+    }
+    state.dirty = true;
+    setStatus('Image added. Save to keep it.');
+    renderPreview();
+    refreshGit();
+  } catch (e) {
+    setStatus(e.message, true);
+  }
+}
+
+function insertAtCursor(text) {
+  const el = $('body');
+  const { selectionStart: s, selectionEnd: e, value } = el;
+  el.value = value.slice(0, s) + text + value.slice(e);
+  el.selectionStart = el.selectionEnd = s + text.length;
+  el.focus();
+  el.dispatchEvent(new Event('input'));
+}
+
+function wrap(marker) {
+  const el = $('body');
+  const { selectionStart: s, selectionEnd: e, value } = el;
+  const selected = value.slice(s, e) || 'text';
+  el.value = value.slice(0, s) + marker + selected + marker + value.slice(e);
+  el.selectionStart = s + marker.length;
+  el.selectionEnd = s + marker.length + selected.length;
+  el.focus();
+  el.dispatchEvent(new Event('input'));
+}
+
+function prefixLine(prefix) {
+  const el = $('body');
+  const { selectionStart: s, value } = el;
+  const lineStart = value.lastIndexOf('\n', s - 1) + 1;
+  el.value = value.slice(0, lineStart) + prefix + value.slice(lineStart);
+  el.selectionStart = el.selectionEnd = s + prefix.length;
+  el.focus();
+  el.dispatchEvent(new Event('input'));
+}
+
+function insertLink() {
+  const url = prompt('Link URL', 'https://');
+  if (!url) return;
+  const el = $('body');
+  const { selectionStart: s, selectionEnd: e, value } = el;
+  const label = value.slice(s, e) || 'link';
+  el.value = `${value.slice(0, s)}[${label}](${url})${value.slice(e)}`;
+  el.focus();
+  el.dispatchEvent(new Event('input'));
+}
+
+$('new').onclick = newPost;
+$('commit').onclick = async () => {
+  const message = prompt('Describe this update (commit message):', 'Update blog posts');
+  if (!message) return;
+  try {
+    await api('/api/commit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message }) });
+    await refreshGit();
+    alert('Committed. Open GitHub Desktop and click Push origin to publish.');
+  } catch (e) {
+    alert(e.message);
+  }
+};
+
+document.addEventListener('keydown', (e) => {
+  if (!(e.metaKey || e.ctrlKey) || !$('body')) return;
+  const key = e.key.toLowerCase();
+  if (key === 's') { e.preventDefault(); save($('draft').checked); }
+  if (document.activeElement === $('body')) {
+    if (key === 'b') { e.preventDefault(); wrap('**'); }
+    if (key === 'i') { e.preventDefault(); wrap('*'); }
+    if (key === 'k') { e.preventDefault(); insertLink(); }
+  }
+});
+window.addEventListener('beforeunload', (e) => { if (state.dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+state.posts = await api('/api/posts');
+renderList();
+refreshGit();
+</script>
+</body>
+</html>
