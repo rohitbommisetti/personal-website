@@ -1,0 +1,168 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #faf8f0;
+  color: #2b3328;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.page a {
+  color: #2b3328;
+  text-decoration: none;
+  border-bottom: 1px solid #cfd6c4;
+  transition: border-color 0.2s;
+}
+
+.page a:hover {
+  border-bottom-color: #46603f;
+}
+
+.main {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 112px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.page .name {
+  font-size: 19px;
+  font-weight: 500;
+  border-bottom-color: transparent;
+}
+
+.social {
+  display: flex;
+  gap: 18px;
+  font-size: 15px;
+}
+
+.page .social a,
+.page .muted {
+  color: #5f6a59;
+  border-bottom-color: transparent;
+}
+
+.page .social a:hover,
+.page a.muted:hover {
+  border-bottom-color: #cfd6c4;
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bio p {
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 15px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+  color: #5f6a59;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.book {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.author {
+  font-size: 14px;
+  color: #5f6a59;
+}
+
+.post {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.page .postLink {
+  border-bottom-color: transparent;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.date {
+  flex-shrink: 0;
+  font-size: 14px;
+  color: #5f6a59;
+  font-variant-numeric: tabular-nums;
+}
+
+.pageFoot {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 14px;
+  color: #5f6a59;
+}
+
+.footer {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 13px;
+  color: #5f6a59;
+}
+
+.time {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 600px) {
+  .main {
+    padding-top: 64px;
+  }
+}
