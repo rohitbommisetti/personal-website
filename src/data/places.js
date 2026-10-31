@@ -5,12 +5,11 @@ const places = [
     items: [
       { name: 'Friday Saturday Sunday', area: 'Rittenhouse', note: 'The tasting menu upstairs, or a seat at the bar.' },
       { name: 'La Jefa', area: 'Rittenhouse', note: 'Mexican café by day, cocktails by night.' },
-      { name: 'Zahav', area: 'Society Hill', note: 'Israeli. Order the laffa and hummus.' },
+      { name: 'Kalaya', area: 'Fishtown', note: 'Southern Thai in a big, beautiful room.' },
       { name: 'Suraya', area: 'Fishtown', note: 'Lebanese, with a garden out back.' },
-      { name: 'John’s Roast Pork', area: 'South Philly', note: 'Roast pork with greens and sharp provolone.' },
-      { name: 'Dalessandro’s Steaks', area: 'Roxborough', note: 'The cheesesteak worth the drive.' },
+      { name: 'Middle Child', area: 'Washington Square West', note: 'Creative sandwiches and a great breakfast.' },
       { name: 'Reading Terminal Market', area: 'Center City', note: 'Go hungry, go early.' },
-      { name: 'Federal Donuts', area: 'Multiple', note: 'Fried chicken and a hot fresh donut.' },
+      { name: '1-900-ICE-CREAM', area: 'Rittenhouse', note: 'Rotating soft serve and wonderfully weird flavors.' },
     ],
   },
   {
