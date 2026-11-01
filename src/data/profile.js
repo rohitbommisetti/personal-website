@@ -14,9 +14,7 @@ const profile = {
     [
       'I work at ',
       { text: 'Renovus Capital', href: 'https://renovuscapital.com' },
-      ', a private equity firm outside Philadelphia, where I’m focused on modernizing the service economy with AI. We’ve been ',
-      { text: 'ranked', href: 'https://www.businesswire.com/news/home/20260511889861/en/' },
-      ' #1 in small-cap private equity globally four years running.',
+      ', where I’m focused on modernizing the service economy with AI.',
     ],
     [
       'Before that, I worked on reducing oncology readmissions at Carnegie Mellon, built a student entrepreneurship community, and taught AI with a team from Stanford. I studied economics at the University of Pittsburgh.',
