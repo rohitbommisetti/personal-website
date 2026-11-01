@@ -9,12 +9,12 @@ const profile = {
   sameAs: ['https://twitter.com/rohitbommisetti', 'https://www.linkedin.com/in/rohitbommisetti'],
   // Shown in Google results for the home page.
   description:
-    'Rohit Bommisetti works at Renovus Capital, a private equity firm outside Philadelphia, focused on modernizing the service economy with AI.',
+    'Rohit Bommisetti works at Renovus Capital, a private equity firm outside Philadelphia, where he’s focused on modernizing the service economy with AI.',
   bio: [
     [
       'I work at ',
       { text: 'Renovus Capital', href: 'https://renovuscapital.com' },
-      ', a private equity firm outside Philadelphia, focused on modernizing the service economy with AI. We’ve been ',
+      ', a private equity firm outside Philadelphia, where I’m focused on modernizing the service economy with AI. We’ve been ',
       { text: 'ranked', href: 'https://www.businesswire.com/news/home/20260511889861/en/' },
       ' #1 in small-cap private equity globally four years running.',
     ],
