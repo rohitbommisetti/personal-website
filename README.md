@@ -37,3 +37,7 @@ npm start
 ```
 
 `npm start` (and `npm run build`) regenerate `public/posts/index.json` from the Markdown files first.
+
+## Search engines
+
+`npm run build` also runs `scripts/prerender.js`, which writes a full HTML page for every route and published post (own title, description, canonical URL, social tags and structured data), plus `sitemap.xml` and `robots.txt`. New posts and data changes are picked up automatically on the next deploy.

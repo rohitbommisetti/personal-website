@@ -16,7 +16,7 @@ const routes = {
   '/bookshelf': { page: Bookshelf, title: 'Bookshelf — Rohit Bommisetti' },
   '/quotes': { page: Quotes, title: 'Quotes — Rohit Bommisetti' },
   '/trails': { page: Trails, title: 'Trails — Rohit Bommisetti' },
-  '/places': { page: Places, title: 'Places — Rohit Bommisetti' },
+  '/places': { page: Places, title: 'Places in Philadelphia — Rohit Bommisetti' },
   '/photos': { page: Photos, title: 'Photos — Rohit Bommisetti' },
 };
 

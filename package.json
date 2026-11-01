@@ -20,6 +20,7 @@
     "start": "react-scripts start",
     "prebuild": "node scripts/build-posts-index.js",
     "build": "react-scripts build",
+    "postbuild": "node scripts/prerender.js",
     "test": "react-scripts test",
     "write": "node scripts/write.js",
     "eject": "react-scripts eject"
